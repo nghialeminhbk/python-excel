@@ -7,7 +7,7 @@ pipeline {
                 sh "pip3 install -r requirements.txt"
             }
         }
-		stage("Deploy") {
+		stage("Process check Account") {
 			steps {
 				script {
                     def cmd = sh(script: "python3 app.py", returnStdout: true).trim()
