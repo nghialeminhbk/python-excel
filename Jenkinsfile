@@ -2,9 +2,10 @@ pipeline {
 	agent any
 
 	stages {
-		stage("Dynamic Deployment") {
+		stage("Deploy") {
 			steps {
 				script {
+                    sh "ls"
 					def environment = ["dev", "prd", "stg"]
 					environment.each{e -> stage("Deploy to ${e}"){
 						withAWS(region: "us-east-1"){
