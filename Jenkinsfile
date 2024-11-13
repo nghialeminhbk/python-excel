@@ -4,7 +4,11 @@ pipeline {
 	stages {
         stage("Prepare environment") {
             steps {
-                sh "pip3 install -r requirements.txt"
+                sh """
+                python3 -m venv venv
+                source venv/bin/activate
+                pip3 install -r requirements.txt
+                """
             }
         }
 		stage("Process check Account") {
@@ -25,5 +29,8 @@ pipeline {
 				}
 			}
 		}
+        stage("Push check file to s3") {
+
+        }
 	}
 }
