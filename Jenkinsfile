@@ -15,8 +15,8 @@ pipeline {
                     def inputArr = cmd.replaceAll("\\[|\\]", "").split(",").collect { it as Integer }
 					inputArr.each{e -> stage("Check Account: ${e}"){
 						withAWS(region: "us-east-1"){
-                            sh "aws s3 list --output text"
-							// rs = sh(script: "aws s3 list --output text", returnStdout: true).trim()
+                            sh "aws s3 ls --output text"
+							// rs = sh(script: "aws s3 ls --output text", returnStdout: true).trim()
 						}
 					}}
 				}
